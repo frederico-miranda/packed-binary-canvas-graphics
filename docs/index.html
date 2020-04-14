@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8" />
+  <title>PBCG — Packed Binary Canvas Graphics</title>
+</head>
+
+<body>
+  <aside>Useful read: <a href="https://stackoverflow.blog/2020/04/06/a-practical-guide-to-writing-technical-specs/">A practical guide to writing technical specs</a></aside>
+  <main>
+    <article>
+      <header id="header">
+        <h1>PBCG — Packed Binary Canvas Graphics</h1>
+        <p>Author: <a href="https://github.com/frederico-miranda" title="Project Author">Frederico Miranda</a></p>
+        <p>Created on: <time datetime="2020-04-11">April 11th, 2020</time></p>
+      </header>
+      <section id="introduction">
+        <h2>Introduction</h2>
+        <p>Web applications should have an overall file size as small as possible, for the reasons of faster loading times, smooth experiences and unobtrusive caching. This concern is even more relevant now, where the majority of users navigate the web on mobile devices, like smartphones and tablets, which usually have far less volatile memory and storage space than laptop or desktop computers. PBCG — Packed Binary Canvas Graphics is a binary file format for vector graphic images that internally uses the existing <a href="https://html.spec.whatwg.org/multipage/canvas.html">HTML Canvas API</a>, which makes it backward compatible and usable today.</p>
+        <section id="context">
+          <h3>Context</h3>
+          <p>The emergence of web applications that do as much as, or even more than, the widely-known and familiar desktop applications has put pressure upon web developers to write complex and highly performant code. Web developers are now expected to create fancy games or complex tools that run smoothly on web browsers. But, the more assets an application has, the more data needs to be downloaded and parsed by the web browser, which might result in lag, stutter and hickup. This creates an disincentive for developers that might end up choosing to cut short their ambitions in order to have a deliverable product with less features.</p>
+        </section>
+        <section id="goals">
+          <h3>Goals</h3>
+          <p>This project aims to alleviate web developers from some of those burdens, by providing a simple, lightweight and fast vector graphics image file format that can be used on existing web browsers, by the use of the HTML canvas element. This also enables the development of more ambitious projects, like complex video games that run fully and smoothly on web browsers. It shall also provide a JavaScript library for generating files for the PBCG format. It also aims to provide converters from existing popular image formats (like SVG and EPS) to PBCG, so that designers and developers can continue to put their existing tools and assets into good use. It can also be used as a target file format for those wishing to create vector graphic images but do not want to go through the complexities of writing SVG or EPS files.</p>
+        </section>
+        <section id="future-goals">
+          <h3>Future Goals</h3>
+          <p>In order to deliver a minimum viable product, relevant features that do are provided by the HTML canvas API, such as <span class="inline-list-item">patterns</span>, <span class="inline-list-item">rotations</span>, <span class="inline-list-item">translations</span> and <span class="inline-list-item">scalings</span> have been left out in order to simplify development. However, these features should be added in future versions of this file format.</p>
+          <p>The <abbr title="Encapsulated PostScript">EPS</abbr> (Encapsulated PostScript) file format is the common output format of Adobe Illustrator, a tool used by professional designers, and also the usual format for files of websites that provide a stock of vector graphic images. It is significantly complex to parse EPS files and convert them to PBCG, but this would be immensely useful for designers (because it would enable the use of their existing assets and tools), so a converter from EPS to PBCG is on the roadmap of this project.</p>
+        </section>
+        <section id="assumptions">
+          <h3>Assumptions</h3>
+          <p>The HTML Canvas API provides multiple primitives for stroking and filling shapes, such as <span class="inline-list-item">lines</span>, <span class="inline-list-item">arcs</span>, <span class="inline-list-item">rectangles</span>, <span class="inline-list-item">bézier curves</span> and <span class="inline-list-item">ellipses</span>. However, from the point of view of PBCG, only <a href="https://html.spec.whatwg.org/multipage/canvas.html#path2d-objects">Path2D objects</a> exist, because they allow the browser to do many optimizations that improve performance and memory usage. If you need to support older browsers, you can use a polyfill for it, like this <a href="https://github.com/google/canvas-5-polyfill">polyfill for canvas provided by Google</a>. The reference implementation aims to be as performant as possible, so it makes extensive use of newer features, such as <a href="https://www.ecma-international.org/ecma-262/10.0/index.html#sec-array.prototype.copywithin">Array.prototype.copyWithin</a> and <a href="https://www.ecma-international.org/ecma-262/10.0/index.html#sec-typedarray-objects">typed arrays</a>, which are absent on older browsers. You'll need to provide polyfills for those if you want to use the reference implementation on older browsers. A full list of all required polyfills together with suggestions will be presented on the first release of the reference implementation.</p>
+        </section>
+      </section>
+    </article>
+  </main>
+</body>
+
+</html>
